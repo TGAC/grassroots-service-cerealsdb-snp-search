@@ -378,7 +378,7 @@ static void DoSearch (ServiceJob *job_p, const char * const marker_s, CerealsDBS
 
 			if (query_p)
 				{
-					json_t *results_p = GetAllMongoResultsAsJSON (data_p -> csd_mongo_p, query_p, NULL);
+					json_t *results_p = GetAllMongoResultsAsJSON (data_p -> csd_mongo_p, query_p, NULL, NULL, 0);
 
 					if (results_p)
 						{
