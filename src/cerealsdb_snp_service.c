@@ -250,10 +250,10 @@ static ServiceJobSet *RunCerealsDBSNPSearchService (Service *service_p, Paramete
 					SharedType marker_value;
 					InitSharedType (&marker_value);
 
-					if (GetParameterValueFromParameterSet (param_set_p, S_MARKER.npt_name_s, &marker_value, true))
+					if (GetCurrentParameterValueFromParameterSet (param_set_p, S_MARKER.npt_name_s, &marker_value))
 						{
 							DoSearch (job_p, marker_value.st_string_value_s, data_p);
-						}		/* if (GetParameterValueFromParameterSet (param_set_p, S_MARKER.npt_name_s, &marker_value, true)) */
+						}		/* if (GetCurrentParameterValueFromParameterSet (param_set_p, S_MARKER.npt_name_s, &marker_value)) */
 
 				}		/* if (param_set_p) */
 
