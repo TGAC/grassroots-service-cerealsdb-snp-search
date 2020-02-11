@@ -30,6 +30,8 @@
 #include "math_utils.h"
 #include "string_utils.h"
 
+#include "string_parameter.h"
+
 /*
  * Static declarations
  */
@@ -170,14 +172,9 @@ static ParameterSet *GetCerealsDBSNPSearchServiceParameters (Service *service_p,
 		{
 			ServiceData *data_p = service_p -> se_data_p;
 			Parameter *param_p = NULL;
-			SharedType def;
 			ParameterGroup *group_p = NULL;
 
-			InitSharedType (&def);
-
-			def.st_string_value_s = NULL;
-
-			if ((param_p = EasyCreateAndAddParameterToParameterSet (data_p, param_set_p, group_p, S_MARKER.npt_type, S_MARKER.npt_name_s, "Marker", "The name of the marker to search for", def, PL_ALL)) != NULL)
+			if ((param_p = EasyCreateAndAddStringParameterToParameterSet (data_p, param_set_p, group_p, S_MARKER.npt_type, S_MARKER.npt_name_s, "Marker", "The name of the marker to search for", NULL, PL_ALL)) != NULL)
 				{
 					return param_set_p;
 				}
@@ -247,12 +244,11 @@ static ServiceJobSet *RunCerealsDBSNPSearchService (Service *service_p, Paramete
 
 			if (param_set_p)
 				{
-					SharedType marker_value;
-					InitSharedType (&marker_value);
+					const char *marker_s = NULL;
 
-					if (GetCurrentParameterValueFromParameterSet (param_set_p, S_MARKER.npt_name_s, &marker_value))
+					if (GetCurrentStringParameterValueFromParameterSet (param_set_p, S_MARKER.npt_name_s, &marker_s))
 						{
-							DoSearch (job_p, marker_value.st_string_value_s, data_p);
+							DoSearch (job_p, marker_s, data_p);
 						}		/* if (GetCurrentParameterValueFromParameterSet (param_set_p, S_MARKER.npt_name_s, &marker_value)) */
 
 				}		/* if (param_set_p) */
@@ -378,7 +374,7 @@ static void DoSearch (ServiceJob *job_p, const char * const marker_s, CerealsDBS
 
 			if (query_p)
 				{
-					json_t *results_p = GetAllMongoResultsAsJSON (data_p -> csd_mongo_p, query_p, NULL, NULL, 0);
+					json_t *results_p = GetAllMongoResultsAsJSON (data_p -> csd_mongo_p, query_p, NULL);
 
 					if (results_p)
 						{
