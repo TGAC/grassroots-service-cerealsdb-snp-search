@@ -38,15 +38,15 @@
 
 static NamedParameterType S_MARKER = { "Marker", PT_KEYWORD };
 
-static const char *GetCerealsDBSNPSearchServiceName (Service *service_p);
+static const char *GetCerealsDBSNPSearchServiceName (const Service *service_p);
 
-static const char *GetCerealsDBSNPSearchServiceDesciption (Service *service_p);
+static const char *GetCerealsDBSNPSearchServiceDesciption (const Service *service_p);
 
-static const char *GetCerealsDBSNPSearchServiceInformationUri (Service *service_p);
+static const char *GetCerealsDBSNPSearchServiceInformationUri (const Service *service_p);
 
 static ParameterSet *GetCerealsDBSNPSearchServiceParameters (Service *service_p, Resource *resource_p, UserDetails *user_p);
 
-static bool GetCerealsDBSNPSearchServiceParameterTypesForNamedParameters (struct Service *service_p, const char *param_name_s, ParameterType *pt_p);
+static bool GetCerealsDBSNPSearchServiceParameterTypesForNamedParameters (const Service *service_p, const char *param_name_s, ParameterType *pt_p);
 
 static void ReleaseCerealsDBSNPSearchServiceParameters (Service *service_p, ParameterSet *params_p);
 
@@ -146,19 +146,19 @@ Service *GetCerealsDBSNPSearchService (GrassrootsServer *grassroots_p)
 
 
 
-static const char *GetCerealsDBSNPSearchServiceName (Service * UNUSED_PARAM (service_p))
+static const char *GetCerealsDBSNPSearchServiceName (const Service * UNUSED_PARAM (service_p))
 {
 	return "CerealsDB SNP search service";
 }
 
 
-static const char *GetCerealsDBSNPSearchServiceDesciption (Service * UNUSED_PARAM (service_p))
+static const char *GetCerealsDBSNPSearchServiceDesciption (const Service * UNUSED_PARAM (service_p))
 {
 	return "A service to search CerealsDB SNP data";
 }
 
 
-static const char *GetCerealsDBSNPSearchServiceInformationUri (Service * UNUSED_PARAM (service_p))
+static const char *GetCerealsDBSNPSearchServiceInformationUri (const Service * UNUSED_PARAM (service_p))
 {
 	return NULL;
 }
@@ -194,7 +194,7 @@ static ParameterSet *GetCerealsDBSNPSearchServiceParameters (Service *service_p,
 }
 
 
-static bool GetCerealsDBSNPSearchServiceParameterTypesForNamedParameters (struct Service *service_p, const char *param_name_s, ParameterType *pt_p)
+static bool GetCerealsDBSNPSearchServiceParameterTypesForNamedParameters (const Service *service_p, const char *param_name_s, ParameterType *pt_p)
 {
 	bool success_flag = true;
 
