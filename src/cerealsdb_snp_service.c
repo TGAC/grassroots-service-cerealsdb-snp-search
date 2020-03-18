@@ -40,7 +40,9 @@ static NamedParameterType S_MARKER = { "Marker", PT_KEYWORD };
 
 static const char *GetCerealsDBSNPSearchServiceName (const Service *service_p);
 
-static const char *GetCerealsDBSNPSearchServiceDesciption (const Service *service_p);
+static const char *GetCerealsDBSNPSearchServiceDescription (const Service *service_p);
+
+static const char *GetCerealsDBSNPSearchServiceAlias (const Service *service_p);
 
 static const char *GetCerealsDBSNPSearchServiceInformationUri (const Service *service_p);
 
@@ -88,7 +90,8 @@ ServicesArray *GetServices (UserDetails *user_p, GrassrootsServer *grassroots_p)
 						{
 							if (InitialiseService (service_p,
 																		 GetCerealsDBSNPSearchServiceName,
-																		 GetCerealsDBSNPSearchServiceDesciption,
+																		 GetCerealsDBSNPSearchServiceDescription,
+																		 GetCerealsDBSNPSearchServiceAlias,
 																		 GetCerealsDBSNPSearchServiceInformationUri,
 																		 RunCerealsDBSNPSearchService,
 																		 IsResourceForCerealsDBSNPSearchService,
@@ -152,11 +155,16 @@ static const char *GetCerealsDBSNPSearchServiceName (const Service * UNUSED_PARA
 }
 
 
-static const char *GetCerealsDBSNPSearchServiceDesciption (const Service * UNUSED_PARAM (service_p))
+static const char *GetCerealsDBSNPSearchServiceDescription (const Service * UNUSED_PARAM (service_p))
 {
 	return "A service to search CerealsDB SNP data";
 }
 
+
+static const char *GetCerealsDBSNPSearchServiceAlias (const Service * UNUSED_PARAM (service_p))
+{
+	return "search_cerealsdb_snps";
+}
 
 static const char *GetCerealsDBSNPSearchServiceInformationUri (const Service * UNUSED_PARAM (service_p))
 {
