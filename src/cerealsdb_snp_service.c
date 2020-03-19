@@ -163,7 +163,7 @@ static const char *GetCerealsDBSNPSearchServiceDescription (const Service * UNUS
 
 static const char *GetCerealsDBSNPSearchServiceAlias (const Service * UNUSED_PARAM (service_p))
 {
-	return "cerealsdb/search_snps";
+	return "cerealsdb" SERVICE_GROUP_ALIAS_SEPARATOR "search_snps";
 }
 
 static const char *GetCerealsDBSNPSearchServiceInformationUri (const Service * UNUSED_PARAM (service_p))
